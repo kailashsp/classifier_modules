@@ -18,3 +18,5 @@ The machine learning pipeline has been divided into **five** modules
 5. **evaluate.py** - plots the confusion metrics and saves the missclassified images
 
 6. **usage.py** - shows how to use the modules and set the hyperparameters                                           
+
+Documentation URL : http://kailashsp.github.io/
