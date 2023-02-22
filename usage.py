@@ -2,10 +2,6 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ['XLA_FLAGS']='--xla_gpu_cuda_data_dir=/home/kailash/anaconda3/envs/Classifier_env/lib'
 
-os.environ['AWS_ACCESS_KEY_ID']='AKIA52TAZEDD2NZ4GNUJ'
-   # The access key for your AWS account.
-os.environ['AWS_SECRET_ACCESS_KEY']='VAD7A1chOi4pm+JcYHENW9K5ROHU+GPUvDciBDTo'
-   # The secret access key for your AWS account.
 import boto3
 
 my_session = boto3.session.Session()
