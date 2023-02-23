@@ -40,11 +40,48 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Module_Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#loading-data">Loading data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#augmentation-and-optimisation">Augmentation and optimisation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#training-compile-the-model-and-fitting">Training(compile the model and fitting)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#evaluate">Evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loading-data">Loading data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classifier.loader.LoadDataset"><code class="docutils literal notranslate"><span class="pre">LoadDataset</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classifier.loader.LoadDataset.load_train"><code class="docutils literal notranslate"><span class="pre">LoadDataset.load_train()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#classifier.loader.LoadDataset.load_valid"><code class="docutils literal notranslate"><span class="pre">LoadDataset.load_valid()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#augmentation-and-optimisation">Augmentation and optimisation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classifier.augopt.Mapping"><code class="docutils literal notranslate"><span class="pre">Mapping</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classifier.augopt.Mapping.augmentation"><code class="docutils literal notranslate"><span class="pre">Mapping.augmentation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#classifier.augopt.Mapping.mapping"><code class="docutils literal notranslate"><span class="pre">Mapping.mapping()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#classifier.augopt.Mapping.normalize"><code class="docutils literal notranslate"><span class="pre">Mapping.normalize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classifier.arch.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classifier.arch.Model.arch"><code class="docutils literal notranslate"><span class="pre">Model.arch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#classifier.arch.Model.dense_classifier"><code class="docutils literal notranslate"><span class="pre">Model.dense_classifier()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#classifier.arch.Model.import_model"><code class="docutils literal notranslate"><span class="pre">Model.import_model()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#training-compile-the-model-and-fitting">Training(compile the model and fitting)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classifier.fitcompile.Training"><code class="docutils literal notranslate"><span class="pre">Training</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classifier.fitcompile.Training.compile"><code class="docutils literal notranslate"><span class="pre">Training.compile()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#classifier.fitcompile.Training.fit"><code class="docutils literal notranslate"><span class="pre">Training.fit()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluate">Evaluate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classifier.evaluate.Evaluation"><code class="docutils literal notranslate"><span class="pre">Evaluation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classifier.evaluate.Evaluation.confusion_matrix"><code class="docutils literal notranslate"><span class="pre">Evaluation.confusion_matrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#classifier.evaluate.Evaluation.misclassified"><code class="docutils literal notranslate"><span class="pre">Evaluation.misclassified()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -87,15 +124,170 @@ MobileNetV3LARGE</p>
 </div>
 <section id="loading-data">
 <h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="classifier.loader.LoadDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">classifier.loader.</span></span><span class="sig-name descname"><span class="pre">LoadDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#classifier.loader.LoadDataset" title="Permalink to this definition"></a></dt>
+<dd><p>loads the data from directory as tf.data.dataset for train and valid dataset creation</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#classifier.loader.LoadDataset.load_train" title="classifier.loader.LoadDataset.load_train"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_train</span></code></a>()</p></td>
+<td><p>returns a train dataset based on the parameter inputs</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#classifier.loader.LoadDataset.load_valid" title="classifier.loader.LoadDataset.load_valid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_valid</span></code></a>()</p></td>
+<td><p>returns a valid dataset based on the parameter inputs</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="classifier.loader.LoadDataset.load_train">
+<span class="sig-name descname"><span class="pre">load_train</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#classifier.loader.LoadDataset.load_train" title="Permalink to this definition"></a></dt>
+<dd><p>returns a train dataset based on the parameter inputs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="classifier.loader.LoadDataset.load_valid">
+<span class="sig-name descname"><span class="pre">load_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#classifier.loader.LoadDataset.load_valid" title="Permalink to this definition"></a></dt>
+<dd><p>returns a valid dataset based on the parameter inputs</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="augmentation-and-optimisation">
 <h2>Augmentation and optimisation<a class="headerlink" href="#augmentation-and-optimisation" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="classifier.augopt.Mapping">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">classifier.augopt.</span></span><span class="sig-name descname"><span class="pre">Mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefetch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#classifier.augopt.Mapping" title="Permalink to this definition"></a></dt>
+<dd><p>performs augmentation along with normalisation and rescaling,
+also optimisation of the tf.data dataset</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#classifier.augopt.Mapping.augmentation" title="classifier.augopt.Mapping.augmentation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">augmentation</span></code></a>(image_label, seed)</p></td>
+<td><p>returns augmented images by randomly flipping them</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#classifier.augopt.Mapping.mapping" title="classifier.augopt.Mapping.mapping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapping</span></code></a>(ds[, augment, shuffle])</p></td>
+<td><p>returns the images dataset normalised and  applying augmentation as the parameter set to the train dataset</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#classifier.augopt.Mapping.normalize" title="classifier.augopt.Mapping.normalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize</span></code></a>(image)</p></td>
+<td><p>returns images normalized or as desired  for pretrained model and resized</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="classifier.augopt.Mapping.augmentation">
+<span class="sig-name descname"><span class="pre">augmentation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#classifier.augopt.Mapping.augmentation" title="Permalink to this definition"></a></dt>
+<dd><p>returns augmented images by randomly flipping them</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="classifier.augopt.Mapping.mapping">
+<span class="sig-name descname"><span class="pre">mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">augment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#classifier.augopt.Mapping.mapping" title="Permalink to this definition"></a></dt>
+<dd><p>returns the images dataset normalised and  applying augmentation
+as the parameter set to the train dataset</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="classifier.augopt.Mapping.normalize">
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#classifier.augopt.Mapping.normalize" title="Permalink to this definition"></a></dt>
+<dd><p>returns images normalized or as desired 
+for pretrained model and resized</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="architecture">
 <h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="classifier.arch.Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">classifier.arch.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndenselayers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prediction_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'relu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pretrained_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MobileNetV3Large'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#classifier.arch.Model" title="Permalink to this definition"></a></dt>
+<dd><p>to define the model architecture
+returns the model as per user arguments and inputs</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#classifier.arch.Model.arch" title="classifier.arch.Model.arch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arch</span></code></a>()</p></td>
+<td><p>returns the model architecture with list of dense layers and the dropout value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#classifier.arch.Model.dense_classifier" title="classifier.arch.Model.dense_classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dense_classifier</span></code></a>(flattened, ndenselayers, ...)</p></td>
+<td><p>builds dense classifier layers on to pretrained model</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#classifier.arch.Model.import_model" title="classifier.arch.Model.import_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_model</span></code></a>(modn)</p></td>
+<td><p>returns a pretrained model</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="classifier.arch.Model.arch">
+<span class="sig-name descname"><span class="pre">arch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#classifier.arch.Model.arch" title="Permalink to this definition"></a></dt>
+<dd><p>returns the model architecture with list of dense layers and the dropout value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="classifier.arch.Model.dense_classifier">
+<span class="sig-name descname"><span class="pre">dense_classifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flattened</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndenselayers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#classifier.arch.Model.dense_classifier" title="Permalink to this definition"></a></dt>
+<dd><p>builds dense classifier layers on to pretrained model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="classifier.arch.Model.import_model">
+<span class="sig-name descname"><span class="pre">import_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">modn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#classifier.arch.Model.import_model" title="Permalink to this definition"></a></dt>
+<dd><p>returns a pretrained model</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="training-compile-the-model-and-fitting">
 <h2>Training(compile the model and fitting)<a class="headerlink" href="#training-compile-the-model-and-fitting" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="classifier.fitcompile.Training">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">classifier.fitcompile.</span></span><span class="sig-name descname"><span class="pre">Training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#classifier.fitcompile.Training" title="Permalink to this definition"></a></dt>
+<dd><p>to invoke functions for compiling the model and training</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#classifier.fitcompile.Training.compile" title="classifier.fitcompile.Training.compile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compile</span></code></a>(loss[, optimizer, momentum, lrate, ...])</p></td>
+<td><p>to compile the model for loss ,optimizer and metrics</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#classifier.fitcompile.Training.fit" title="classifier.fitcompile.Training.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(epoch, train_ds, valid_ds, model_name)</p></td>
+<td><p>Trains the model, logs into tensorboard and returns accuracy, precision and recall as named tuple</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="classifier.fitcompile.Training.compile">
+<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'SGD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lrate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-07</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'acc'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#classifier.fitcompile.Training.compile" title="Permalink to this definition"></a></dt>
+<dd><p>to compile the model for loss ,optimizer and metrics</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="classifier.fitcompile.Training.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#classifier.fitcompile.Training.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the model, logs into tensorboard and
+returns accuracy, precision and recall as named tuple</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="evaluate">
 <h2>Evaluate<a class="headerlink" href="#evaluate" title="Permalink to this heading"></a></h2>
@@ -103,6 +295,41 @@ MobileNetV3LARGE</p>
 <p class="admonition-title">Note</p>
 <p>Memory management issues on application to large datasets</p>
 </div>
+<dl class="py class">
+<dt class="sig sig-object py" id="classifier.evaluate.Evaluation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">classifier.evaluate.</span></span><span class="sig-name descname"><span class="pre">Evaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_ds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#classifier.evaluate.Evaluation" title="Permalink to this definition"></a></dt>
+<dd><p>view confusion matrix, classification report, and
+misclassified images saved to a folder</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#classifier.evaluate.Evaluation.confusion_matrix" title="classifier.evaluate.Evaluation.confusion_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">confusion_matrix</span></code></a>()</p></td>
+<td><p>plots the confusion matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#classifier.evaluate.Evaluation.misclassified" title="classifier.evaluate.Evaluation.misclassified"><code class="xref py py-obj docutils literal notranslate"><span class="pre">misclassified</span></code></a>()</p></td>
+<td><p>prints the numbers of misclassified images and saves them to a folder with their respective prediction and validation labels</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="classifier.evaluate.Evaluation.confusion_matrix">
+<span class="sig-name descname"><span class="pre">confusion_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#classifier.evaluate.Evaluation.confusion_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>plots the confusion matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="classifier.evaluate.Evaluation.misclassified">
+<span class="sig-name descname"><span class="pre">misclassified</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#classifier.evaluate.Evaluation.misclassified" title="Permalink to this definition"></a></dt>
+<dd><p>prints the numbers of misclassified images and saves them to a folder
+with their respective prediction and validation labels</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
