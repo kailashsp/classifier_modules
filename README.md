@@ -19,4 +19,4 @@ The machine learning pipeline has been divided into **five** modules
 
 6. **usage.py** - shows how to use the modules and set the hyperparameters                                           
 
-Documentation URL : http://kailashsp.github.io/
+Documentation URL : https://kailashsp.github.io/classifier_modules/
