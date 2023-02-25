@@ -1,5 +1,4 @@
 autodocsumm
-matplotlib==3.6.2
 numpy==1.23.5
 pandas==1.5.2 
 Pillow==9.3.0
