@@ -1,17 +1,22 @@
 Module_Usage
 ============
 
-Clone the directory 
+Steps to build a classifier
 
-Run the usage.py with the necessary changes. By default the pretrained model used is 
+#. Clone the directory 
+
+#. Ensure the images files follows the directory structure as given in :
+https://www.tensorflow.org/api_docs/python/tf/keras/utils/image_dataset_from_directory
+
+#. Run the usage.py with the necessary changes. By default the pretrained model used is 
 MobileNetV3LARGE 
 
 .. note::
-    Start with few layers, and create a decent baseline. 
+    Start with few layers, and experiment to create a decent baseline. 
 
-    Keep the batch size constant.
+    Keep the batch size constant while changing other parameters.
 
-    Changes in Optimisers / learning rate/ adding batch norm / adding drop out should be done step by step
+    proceed with changes in Optimisers / learning rate/ adding batch norm / adding drop out 
 
     Use tensorboard to view the different model performance
 

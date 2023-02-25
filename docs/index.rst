@@ -6,9 +6,11 @@
 Welcome to Image_Classifier's documentation!
 ============================================
 
-**Image_Classifier** is a Python library to create a model for image classifier and uses the tensorflow framework. 
-It focuses on using pretrained models to generate models for a specific task. Though we can also use custom model.
-Loading the dataset is also optimised and in case of lack of resources we can unset the optimisation.
+**Image_Classifier** is a Python package suited for building an image classifier relying on the tensorflow framework. 
+Pretrained models from `keras.applications <https://keras.io/api/applications/>`_  are used to generate models.
+By deault uses MobileNetV3LARGE 
+usage.py scipt is used for finer control of all parameters and option to use a custom model is available from there as well.
+
 
 .. note::
    This project is under active development
@@ -23,6 +25,8 @@ Contents
 .. toctree::
 
    module_usage
+
+   Finer_control_with_usage.py
 
 Indices and tables
 ==================
