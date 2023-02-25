@@ -3,12 +3,12 @@ Module_Usage
 
 Steps to build a classifier
 
-#. Clone the directory 
+1. Clone the directory 
 
-#. Ensure the images files follows the directory structure as given in :
+2. Ensure the images files follows the directory structure as given in :
 https://www.tensorflow.org/api_docs/python/tf/keras/utils/image_dataset_from_directory
 
-#. Run the usage.py with the necessary changes. By default the pretrained model used is 
+3. Run the usage.py with the necessary changes. By default the pretrained model used is 
 MobileNetV3LARGE 
 
 .. note::

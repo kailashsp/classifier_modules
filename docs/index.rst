@@ -26,7 +26,7 @@ Contents
 
    module_usage
 
-   Finer_control_with_usage.py
+   Customisation
 
 Indices and tables
 ==================
