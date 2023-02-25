@@ -2,6 +2,7 @@ autodocsumm
 numpy
 pandas
 Pillow
+mlflow
 scikit-image
 scikit-learn
 scipy
